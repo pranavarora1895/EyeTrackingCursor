@@ -62,7 +62,7 @@ def eye_scroller(scroll_landmarks):
             pyautogui.moveTo(screen_x, screen_y)
 
 
-def mouse_click(eye, img_w, img_h):
+def blink_click(eye, img_w, img_h):
     """Clicks if the left eye blinks."""
     for land in eye:
         x = int(img_w * land.x)
@@ -94,7 +94,7 @@ with mp_face_mesh.FaceMesh(
             eye_scroller(results.multi_face_landmarks[0].landmark[474:478])
             left = [results.multi_face_landmarks[0].landmark[145],
                     results.multi_face_landmarks[0].landmark[159]]
-            mouse_click(left, img_w, img_h)
+            blink_click(left, img_w, img_h)
             mesh_points = np.array([np.multiply([p.x, p.y],
                                                 [img_w, img_h]).astype(int)
                                     for p in results.multi_face_landmarks[0].landmark])
