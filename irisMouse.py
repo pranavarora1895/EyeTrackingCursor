@@ -27,6 +27,7 @@ class EYE_MESH_LANDMARKS(Enum):
     L_H_RIGHT = [133]  # right eye's left most landmark
     R_H_LEFT = [362]  # left eye right most landmark
     R_H_RIGHT = [263]  # left eye left most landmark
+    LEFT_EYE_CLOSE_THRESHOLD = 1.5
 
 
 def euclidean_distance(pointA, pointB):
@@ -69,7 +70,7 @@ def blink_click(eye, img_w, img_h):
         y = int(img_h * land.y)
         cv.circle(frame, (x, y), 3, (0, 255, 255))
         eye_wink = (eye[0].y - eye[1].y) * 100
-        if eye_wink < 1.5:
+        if eye_wink < EYE_MESH_LANDMARKS.LEFT_EYE_CLOSE_THRESHOLD.value:
             print("click")
             pyautogui.click()
             pyautogui.sleep(1)
