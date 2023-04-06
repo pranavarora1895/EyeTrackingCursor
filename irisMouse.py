@@ -27,7 +27,7 @@ class EYE_MESH_LANDMARKS(Enum):
     L_H_RIGHT = [133]  # right eye's left most landmark
     R_H_LEFT = [362]  # left eye right most landmark
     R_H_RIGHT = [263]  # left eye left most landmark
-    LEFT_EYE_CLOSE_THRESHOLD = 1.5
+    LEFT_EYE_CLOSE_THRESHOLD = 1.3
 
 
 def euclidean_distance(pointA, pointB):
@@ -137,11 +137,13 @@ with mp_face_mesh.FaceMesh(
                        (30, 30),
                        cv.FONT_HERSHEY_PLAIN,
                        1.2,
-                       (0, 255, 0),
+                       (0, 0, 255),
                        1,
                        cv.LINE_AA)
-
-        cv.imshow('Camera', frame)
+        window_name = "Camera"
+        cv.namedWindow(window_name, cv.WINDOW_NORMAL)
+        cv.setWindowProperty(window_name, cv.WND_PROP_TOPMOST, 1)
+        cv.imshow(window_name, frame)
         key = cv.waitKey(1)
 
         # terminates on pressing 'q'
