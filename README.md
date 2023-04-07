@@ -4,8 +4,12 @@
 
 ### How to run the project:
 
-```python
-git clone https://github.com/pranavarora1895/EyeTrackingCursor.git
+```cmd
+Go To the following folder: Technical_Content/Code/
+
+Open Terminal
+
+Type the following commands:
 
 pip install virtualenv
 
